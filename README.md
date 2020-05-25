@@ -1,0 +1,1 @@
+the odin project etch a sketch exercise using html, css, and javascript.
