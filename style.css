@@ -1,0 +1,16 @@
+#container {
+    display: grid;
+    position: absolute;
+    height: 65%;
+    width: 50%;
+    top: 15%;
+    left: 25%;
+    grid-gap: 5px;
+}
+
+#reset {
+    position: absolute;
+    top: 10%;
+    left: 48%;
+    font-size: 15px;
+}
