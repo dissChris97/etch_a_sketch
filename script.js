@@ -1,20 +1,30 @@
 let gridTotal = 16;
-let newDiv = 'null';
 
-function gridCreate(gridTotal) {
-    for(let i = 0; i < gridTotal; i++) {
-        newDiv = document.createElement('div');
+function createGrid(gridTotal) {
+    for(let i = 0; i < gridTotal * gridTotal; i++) {
+        let newDiv = document.createElement('div');
         newDiv.id = `grid${i}`;
-        newDiv.className = 'grid';
         container.appendChild(newDiv);
+        container.style.setProperty('grid-template-columns', `repeat(${gridTotal}, auto)`);
+        document.getElementById(`grid${i}`).style.backgroundColor = 'purple';
     }
 }
 
-gridCreate(gridTotal);
-
-for(let x = 0; x < gridTotal; x++) {
-    document.getElementById(`grid${x}`).style.backgroundColor = 'purple';
+function removeGrid(gridTotal) {
+    for(let i = 0; i < gridTotal * gridTotal; i++) {
+        let removeDiv = document.getElementById(`grid${i}`);
+        removeDiv.remove();
+    }
 }
 
+createGrid(gridTotal);
+
 let reset = document.getElementById('reset');
-reset.addEventListener('click', () => alert('test'));
+reset.addEventListener('click', () => {
+    removeGrid(gridTotal);
+    gridTotal = prompt('What size grid would you like?');
+    while(gridTotal > 100) {
+        gridTotal = prompt('Please pick a smaller number.');
+    }
+    createGrid(gridTotal);
+});
