@@ -4,9 +4,13 @@ function createGrid(gridTotal) {
     for(let i = 0; i < gridTotal * gridTotal; i++) {
         let newDiv = document.createElement('div');
         newDiv.id = `grid${i}`;
+        newDiv.className = 'gridClass';
         container.appendChild(newDiv);
         container.style.setProperty('grid-template-columns', `repeat(${gridTotal}, auto)`);
         document.getElementById(`grid${i}`).style.backgroundColor = 'purple';
+        newDiv.addEventListener('mouseenter', () => {
+            document.getElementById(`grid${i}`).style.backgroundColor = 'black';
+        });
     }
 }
 
@@ -28,3 +32,4 @@ reset.addEventListener('click', () => {
     }
     createGrid(gridTotal);
 });
+
